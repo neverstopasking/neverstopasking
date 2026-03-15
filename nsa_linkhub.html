@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Never Stop Asking</title>
+  <meta name="description" content="Never Stop Asking — research, maps, investigations, and links." />
+  <style>
+    :root {
+      --bg: #111111;
+      --panel: rgba(22, 22, 22, 0.78);
+      --text: #f6efe4;
+      --muted: #d0c4b2;
+      --accent: #d86a2d;
+      --accent-2: #5d7a58;
+      --border: rgba(246, 239, 228, 0.16);
+      --shadow: 0 18px 60px rgba(0,0,0,0.45);
+      --radius: 24px;
+      --max: 760px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; min-height: 100%; background: radial-gradient(circle at top, rgba(216,106,45,0.18), transparent 30%), radial-gradient(circle at bottom right, rgba(93,122,88,0.18), transparent 28%), linear-gradient(180deg, #0e0e0e 0%, #141414 100%); color: var(--text); font-family: Georgia, "Times New Roman", serif; }
+    body { display: flex; justify-content: center; padding: 28px 16px 40px; }
+    .shell { width: 100%; max-width: var(--max); }
+    .hero, .section { background: rgba(22,22,22,0.78); border: 1px solid var(--border); border-radius: 30px; box-shadow: var(--shadow); backdrop-filter: blur(8px); }
+    .hero { position: relative; overflow: hidden; padding: 26px; margin-bottom: 18px; }
+    .hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(246,239,228,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(246,239,228,0.04) 1px, transparent 1px); background-size: 28px 28px; mask-image: radial-gradient(circle at center, black 45%, transparent 100%); pointer-events: none; opacity: 0.45; }
+    .brand-row { display: flex; gap: 18px; align-items: center; position: relative; z-index: 1; }
+    .mark { width: 92px; height: 92px; flex: 0 0 92px; border-radius: 50%; border: 2px solid rgba(246,239,228,0.16); display: grid; place-items: center; background: radial-gradient(circle at 30% 30%, rgba(216,106,45,0.25), transparent 38%), radial-gradient(circle at 70% 70%, rgba(93,122,88,0.22), transparent 42%), #171717; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04); }
+    .mark svg { width: 72px; height: 72px; overflow: visible; }
+    .eyebrow { display: inline-block; font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; }
+    h1 { margin: 0; line-height: 0.95; font-size: clamp(2rem, 7vw, 3.8rem); letter-spacing: 0.03em; text-transform: uppercase; }
+    .sub { margin: 10px 0 0; color: var(--muted); font-size: 1rem; line-height: 1.5; max-width: 44rem; font-family: Arial, Helvetica, sans-serif; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; position: relative; z-index: 1; }
+    .chip { border: 1px solid var(--border); background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 999px; font-size: 0.8rem; color: var(--text); font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.03em; }
+    .section { padding: 16px; border-radius: var(--radius); margin-bottom: 18px; }
+    .section-title { margin: 0 0 12px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--muted); font-family: Arial, Helvetica, sans-serif; }
+    .links { display: grid; gap: 12px; }
+    .link-card { display: grid; grid-template-columns: 54px 1fr auto; gap: 14px; align-items: center; text-decoration: none; color: var(--text); background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03)); border: 1px solid rgba(246,239,228,0.12); border-radius: 20px; padding: 14px; transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease; }
+    .link-card:hover { transform: translateY(-2px); border-color: rgba(216,106,45,0.45); background: linear-gradient(180deg, rgba(216,106,45,0.10), rgba(255,255,255,0.04)); }
+    .icon { width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--accent); }
+    .link-title { font-size: 1.05rem; margin: 0 0 4px; font-weight: 700; letter-spacing: 0.01em; }
+    .link-desc { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--muted); font-size: 0.92rem; line-height: 1.45; }
+    .arrow { font-size: 1.45rem; color: var(--accent); padding-right: 4px; }
+    .about { font-family: Arial, Helvetica, sans-serif; color: var(--muted); line-height: 1.7; font-size: 0.96rem; }
+    .footer { text-align: center; color: #b8aa96; font-family: Arial, Helvetica, sans-serif; font-size: 0.86rem; padding: 8px; }
+    @media (max-width: 640px) { .hero { padding: 18px; } .brand-row { align-items: flex-start; } .mark { width: 74px; height: 74px; flex-basis: 74px; } .link-card { grid-template-columns: 48px 1fr; } .arrow { display: none; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="brand-row">
+        <div class="mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="46" stroke="rgba(246,239,228,0.18)" stroke-width="1.5"/>
+            <path d="M25 63V35h9l10 15V35h8v28h-8L33 48v15h-8Z" fill="#f6efe4"/>
+            <path d="M60 36c-8 0-13 4-13 10 0 5 4 8 10 10 5 2 7 3 7 5 0 3-3 4-6 4-4 0-8-1-11-3l-3 7c4 2 8 3 14 3 9 0 15-4 15-11 0-5-3-8-10-10-5-2-7-3-7-5 0-2 2-4 6-4 4 0 7 1 10 2l3-7c-3-2-7-3-12-3Z" fill="#d86a2d"/>
+            <path d="M78 63l-2-7H64l-2 7h-9l12-28h10l12 28h-9Zm-12-14h8l-4-10-4 10Z" fill="#f6efe4"/>
+            <circle cx="56" cy="39" r="2.5" fill="#5d7a58"/>
+            <circle cx="48" cy="53" r="2.5" fill="#5d7a58"/>
+            <circle cx="64" cy="58" r="2.5" fill="#5d7a58"/>
+            <path d="M56 39L48 53L64 58" stroke="#5d7a58" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <div class="title-wrap">
+          <div class="eyebrow">Never Stop Asking</div>
+          <h1>Connect the Dots</h1>
+          <p class="sub">Research, maps, investigations, and the threads worth pulling. Built for curious people who want the structure, not just the headlines.</p>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip">Power</span>
+        <span class="chip">Money</span>
+        <span class="chip">Networks</span>
+        <span class="chip">Visual Maps</span>
+        <span class="chip">Never Stop Asking</span>
+      </div>
+    </section>
+    <section class="section">
+      <h2 class="section-title">Start here</h2>
+      <div class="links">
+        <a class="link-card" href="https://substack.com" target="_blank" rel="noopener noreferrer"><div class="icon">SS</div><div><div class="link-title">Substack</div><p class="link-desc">Research posts, explainers, timelines, and the main home base for the project.</p></div><div class="arrow">↗</div></a>
+        <a class="link-card" href="https://github.com" target="_blank" rel="noopener noreferrer"><div class="icon">MAP</div><div><div class="link-title">Interactive Network Map</div><p class="link-desc">Click through people, institutions, and relationships without losing your mind in spreadsheet hell.</p></div><div class="arrow">↗</div></a>
+        <a class="link-card" href="https://instagram.com" target="_blank" rel="noopener noreferrer"><div class="icon">IG</div><div><div class="link-title">Instagram</div><p class="link-desc">Short-form visuals, graphics, and whatever fits before the algorithm gets bored.</p></div><div class="arrow">↗</div></a>
+        <a class="link-card" href="https://tiktok.com" target="_blank" rel="noopener noreferrer"><div class="icon">TT</div><div><div class="link-title">TikTok / Video Posts</div><p class="link-desc">Video explainers, clips, and bite-sized breakdowns for people who need the short version first.</p></div><div class="arrow">↗</div></a>
+        <a class="link-card" href="mailto:hello@example.com"><div class="icon">TIP</div><div><div class="link-title">Send a Source or Correction</div><p class="link-desc">If you have documents, sourcing, or a correction, send it. Accuracy matters more than ego.</p></div><div class="arrow">↗</div></a>
+      </div>
+    </section>
+    <section class="section">
+      <h2 class="section-title">About this project</h2>
+      <div class="about">Never Stop Asking is a space for people who want to understand how systems of power, money, and influence actually work. This is not a left-versus-right arena. It is a place for curious people who care about the truth, are willing to follow the connections, and know we have far more in common with each other than we ever will with the people quietly profiting from the chaos.</div>
+    </section>
+    <div class="footer">Built as a single-file page for GitHub Pages. Replace the placeholder links with your real ones and rename the file to <strong>index.html</strong> if you want it to be the homepage.</div>
+  </main>
+</body>
+</html>
